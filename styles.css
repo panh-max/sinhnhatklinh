@@ -1,0 +1,3957 @@
+/* ======================================
+   A LITTLE WORLD FOR LINH ♡
+   Clean / rebuilt stylesheet
+   ====================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --cream: #fff6f5;
+    --cream-2: #fffaf8;
+    --pink: #e9a7b5;
+    --pink-dark: #c96f88;
+    --pink-soft: #fce8eb;
+    --rose: #8a5c67;
+    --text: #684b52;
+    --muted: #a17d85;
+    --gold: #c69a55;
+    --film: #201e1c;
+    --film-text: #eadcc6;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "DM Sans", sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+button {
+    font: inherit;
+    cursor: pointer;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* ======================================
+   FLOATING DECOR
+   ====================================== */
+
+.background-decor {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 50;
+}
+
+.sparkle {
+    position: absolute;
+    opacity: 0.8;
+    animation: twinkle 3.2s ease-in-out infinite;
+}
+
+.s1  { top: 5%;  left: 8%;  font-size: 24px; color: #f3a6c4; }
+.s2  { top: 12%; left: 25%; font-size: 18px; color: #f6c6a5; animation-delay: .8s; }
+.s3  { top: 7%;  right: 12%; font-size: 34px; color: #d8c2f0; animation-delay: 1.4s; }
+.s4  { top: 22%; right: 25%; font-size: 22px; color: #f5b5c8; animation-delay: .4s; }
+.s5  { top: 31%; left: 5%;  font-size: 28px; color: #f8c5b8; animation-delay: 1.1s; }
+.s6  { top: 18%; left: 45%; font-size: 24px; color: #ed9eb9; animation-delay: 1.6s; }
+.s7  { top: 40%; right: 8%; font-size: 26px; color: #c8c5f5; animation-delay: 2s; }
+.s8  { top: 48%; left: 15%; font-size: 20px; color: #f6c5a2; animation-delay: .7s; }
+.s9  { top: 60%; right: 20%; font-size: 30px; color: #f3a6c4; animation-delay: 1.3s; }
+.s10 { top: 71%; left: 7%;  font-size: 24px; color: #c9c5f0; animation-delay: 1.9s; }
+.s11 { top: 80%; right: 10%; font-size: 22px; color: #f8c4a8; animation-delay: .2s; }
+.s12 { top: 90%; left: 30%; font-size: 28px; color: #f1a9c5; animation-delay: 1.5s; }
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: .35;
+        transform: scale(.86) rotate(0deg);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.18) rotate(12deg);
+    }
+}
+
+/* ======================================
+   SCREEN SYSTEM
+   ====================================== */
+
+.screen {
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: none;
+    position: relative;
+    padding: 60px 20px;
+    z-index: 1;
+}
+
+.screen.active {
+    display: flex;
+    animation: screenIn .55s ease both;
+}
+
+@keyframes screenIn {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ======================================
+   WELCOME
+   ====================================== */
+
+.welcome-screen {
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(
+            ellipse at 20% 20%,
+            #fff0f5 0%,
+            transparent 50%
+        ),
+        radial-gradient(
+            ellipse at 80% 80%,
+            #fff0e9 0%,
+            transparent 50%
+        ),
+        var(--cream);
+}
+
+.welcome-content {
+    width: 100%;
+    max-width: 520px;
+    text-align: center;
+}
+
+.small-label {
+    margin-bottom: 28px;
+    color: var(--pink-dark);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+}
+
+.gift-box {
+    position: relative;
+    width: 190px;
+    height: 190px;
+    margin: 0 auto 26px;
+
+    display: grid;
+    place-items: center;
+
+    cursor: pointer;
+    outline: none;
+}
+
+.gift-glow {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+
+    border-radius: 50%;
+
+    background: #f9dce3;
+    filter: blur(30px);
+}
+
+.gift-emoji {
+    position: relative;
+    font-size: 115px;
+
+    filter: drop-shadow(0 15px 12px #dba6b544);
+
+    animation: giftFloat 3s ease-in-out infinite;
+}
+
+.gift-box:hover .gift-emoji,
+.gift-box:focus-visible .gift-emoji {
+    transform: scale(1.08) rotate(-4deg);
+}
+
+.gift-heart {
+    position: absolute;
+    color: var(--pink-dark);
+    animation: drift 3s ease-in-out infinite;
+}
+
+.heart-1 {
+    top: 14px;
+    right: 14px;
+    font-size: 30px;
+}
+
+.heart-2 {
+    top: 45px;
+    left: 5px;
+    font-size: 23px;
+    animation-delay: 1s;
+}
+
+.heart-3 {
+    bottom: 14px;
+    right: 25px;
+    font-size: 25px;
+    animation-delay: 2s;
+}
+
+@keyframes giftFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(0);
+    }
+
+    50% {
+        transform: translateY(-10px) rotate(3deg);
+    }
+}
+
+@keyframes drift {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.welcome-title,
+.birthday-title,
+.gallery-title,
+.memories-header h1,
+.memory-info h2,
+.memories-ending h2 {
+    font-family: "Playfair Display", serif;
+}
+
+.welcome-title {
+    color: #815661;
+    font-size: clamp(38px, 7vw, 52px);
+    margin-bottom: 16px;
+}
+
+.welcome-description {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.9;
+    margin-bottom: 30px;
+}
+
+.main-button,
+.explore-button,
+.memories-button {
+    border-radius: 999px;
+    transition: .25s ease;
+}
+
+.main-button {
+    padding: 16px 28px;
+    background: var(--pink-dark);
+    color: #fff;
+    font-size: 13px;
+    box-shadow: 0 8px 25px #c96f8833;
+}
+
+.main-button:hover,
+.main-button:focus-visible {
+    transform: translateY(-3px);
+    background: #b95c76;
+}
+
+.main-button span,
+.explore-button span,
+.memories-button span {
+    margin-left: 8px;
+}
+
+.welcome-note {
+    margin-top: 24px;
+    color: #c6a3aa;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+/* ======================================
+   BIRTHDAY
+   ====================================== */
+
+.birthday-screen {
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(
+            ellipse at 80% 20%,
+            #ffedf3 0%,
+            transparent 50%
+        ),
+        radial-gradient(
+            ellipse at 20% 80%,
+            #fff0e9 0%,
+            transparent 50%
+        ),
+        var(--cream);
+}
+
+.birthday-content {
+    width: 100%;
+    max-width: 680px;
+    text-align: center;
+}
+
+.birthday-photo-placeholder {
+    position: relative;
+
+    width: 210px;
+    height: 250px;
+
+    margin: 0 auto 34px;
+    padding: 12px 12px 35px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background: #fff;
+    border-radius: 4px;
+
+    box-shadow: 0 10px 35px #9c66741c;
+
+    transform: rotate(-3deg);
+}
+
+.photo-placeholder-icon {
+    font-size: 80px;
+    margin-bottom: 10px;
+}
+
+.birthday-photo-placeholder p {
+    color: #c6a3aa;
+    font-size: 10px;
+}
+
+.photo-sparkle,
+.photo-decoration {
+    position: absolute;
+    color: var(--pink-dark);
+}
+
+.photo-sparkle {
+    top: -15px;
+    right: -15px;
+    font-size: 25px;
+}
+
+.photo-decoration {
+    bottom: 8px;
+    right: 12px;
+    font-size: 20px;
+}
+
+.birthday-eyebrow {
+    margin-bottom: 15px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.birthday-title {
+    margin-bottom: 26px;
+    color: #815661;
+    font-size: clamp(40px, 8vw, 64px);
+    line-height: 1.13;
+}
+
+.birthday-title span {
+    color: var(--pink-dark);
+    font-style: italic;
+}
+
+.birthday-message {
+    max-width: 500px;
+    margin: 0 auto;
+
+    color: #98757d;
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.birthday-message p + p {
+    margin-top: 14px;
+}
+
+.birthday-signature {
+    margin-top: 24px;
+
+    color: var(--pink-dark);
+
+    font-family: "Playfair Display", serif;
+    font-size: 17px;
+    font-style: italic;
+}
+
+.explore-button {
+    margin-top: 35px;
+    padding: 14px 24px;
+
+    background: #fff;
+    border: 1px solid #f0d4db;
+
+    color: var(--pink-dark);
+    font-size: 12px;
+}
+
+.explore-button:hover {
+    background: var(--pink-soft);
+    transform: translateY(3px);
+}
+
+/* ======================================
+   PORTRAIT GALLERY
+   ====================================== */
+
+.gallery-screen {
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            ellipse at 10% 10%,
+            #fff0f5 0%,
+            transparent 45%
+        ),
+        radial-gradient(
+            ellipse at 90% 90%,
+            #fff0e9 0%,
+            transparent 45%
+        ),
+        var(--cream);
+
+    padding: 90px 24px 70px;
+}
+
+.gallery-container {
+    width: min(1150px, 100%);
+    margin: 0 auto;
+}
+
+.gallery-heading {
+    text-align: center;
+    margin-bottom: 58px;
+}
+
+.gallery-title {
+    color: #815661;
+    font-size: clamp(40px, 6vw, 68px);
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.gallery-title span {
+    color: var(--pink-dark);
+    font-style: italic;
+}
+
+.gallery-subtitle {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.gallery-divider,
+.memories-divider {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+
+    margin-top: 25px;
+
+    color: var(--gold);
+}
+
+.gallery-counter {
+    width: min(1050px, 100%);
+    margin: 0 auto 25px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    color: #b38b53;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.portrait-gallery {
+    display: grid;
+
+    grid-template-columns: repeat(
+        3,
+        minmax(0, 1fr)
+    );
+
+    gap: 38px 32px;
+    align-items: start;
+}
+
+/* Film strip card */
+
+.portrait-card {
+    position: relative;
+    overflow: hidden;
+
+    background: var(--film);
+    color: var(--film-text);
+
+    box-shadow: 0 18px 40px #5c3d4914;
+
+    cursor: pointer;
+
+    animation: cardIn .65s ease both;
+    animation-delay: var(--delay);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+.portrait-card:nth-child(3n + 1) {
+    transform: rotate(-1.2deg);
+}
+
+.portrait-card:nth-child(3n + 2) {
+    transform: rotate(.9deg);
+    margin-top: 20px;
+}
+
+.portrait-card:nth-child(3n) {
+    transform: rotate(-.7deg);
+    margin-top: 8px;
+}
+
+.portrait-card:hover {
+    transform: translateY(-7px) rotate(0deg);
+    box-shadow: 0 25px 55px #5c3d4930;
+}
+
+@keyframes cardIn {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.film-top-holes,
+.film-bottom-holes {
+    height: 12px;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            transparent 0 16px,
+            #d8c9ab 16px 26px,
+            transparent 26px 37px
+        );
+}
+
+.portrait-artwork {
+    width: calc(100% - 28px);
+    aspect-ratio: 4 / 5;
+
+    margin: 14px auto 0;
+
+    overflow: hidden;
+
+    background: #171514;
+
+    position: relative;
+}
+
+.portrait-real-image {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+}
+
+.portrait-caption {
+    padding: 18px 18px 17px;
+    text-align: center;
+}
+
+.portrait-number {
+    display: block;
+
+    margin-bottom: 9px;
+
+    color: #c89f58;
+
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.portrait-name {
+    color: #ceb9aa;
+
+    font-family: "Playfair Display", serif;
+    font-size: 16px;
+    font-style: italic;
+    line-height: 1.45;
+}
+
+.missing-image {
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+    place-items: center;
+    align-content: center;
+    gap: 8px;
+
+    padding: 25px;
+
+    text-align: center;
+
+    color: #cdbdad;
+
+    background:
+        linear-gradient(
+            145deg,
+            #2b2724,
+            #191817
+        );
+}
+
+.missing-image span {
+    font-size: 28px;
+    color: #e5b5c4;
+}
+
+.missing-image p,
+.missing-image strong,
+.missing-image small {
+    display: block;
+    color: inherit;
+}
+
+.gallery-ending {
+    padding: 115px 20px 35px;
+    text-align: center;
+}
+
+.ending-star {
+    margin-bottom: 24px;
+
+    color: var(--gold);
+    font-size: 35px;
+}
+
+.ending-small {
+    margin-bottom: 18px;
+
+    color: #b38b53;
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+
+.gallery-ending h2 {
+    color: #815661;
+
+    font-family: "Playfair Display", serif;
+    font-size: clamp(34px, 5vw, 54px);
+
+    line-height: 1.25;
+}
+
+.gallery-ending h2 span {
+    color: var(--pink-dark);
+    font-style: italic;
+}
+
+.ending-description {
+    margin-top: 18px;
+
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.memories-button {
+    margin-top: 30px;
+    padding: 16px 30px;
+
+    background: #fffdf9;
+    border: 1px solid #d9bd83;
+
+    color: #a77d50;
+    font-size: 12px;
+
+    box-shadow: 0 5px 20px #a77d5012;
+}
+
+.memories-button:hover {
+    background: var(--gold);
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+/* ======================================
+   PORTRAIT LIGHTBOX
+   ====================================== */
+
+.portrait-lightbox,
+.memory-modal {
+    position: fixed;
+    inset: 0;
+
+    z-index: 200;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 28px;
+
+    background: #38232be8;
+    backdrop-filter: blur(10px);
+}
+
+.portrait-lightbox.open,
+.memory-modal.open {
+    display: flex;
+}
+
+.lightbox-close,
+.memory-modal-close {
+    position: absolute;
+
+    top: 20px;
+    right: 26px;
+
+    border: 0;
+    background: transparent;
+
+    color: #fff;
+    font-size: 38px;
+    font-weight: 300;
+
+    z-index: 3;
+}
+
+.lightbox-frame {
+    width: min(410px, 88vw);
+    max-height: 86vh;
+
+    padding: 12px;
+
+    overflow: hidden;
+
+    background: #fffdf9;
+
+    box-shadow: 0 25px 90px #00000044;
+}
+
+.lightbox-photo {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+
+    overflow: hidden;
+
+    background: #241f1e;
+}
+
+.lightbox-photo img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.lightbox-caption {
+    padding: 18px 10px 10px;
+    text-align: center;
+}
+
+.lightbox-number {
+    display: block;
+
+    margin-bottom: 9px;
+
+    color: #b38b53;
+
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.lightbox-caption p {
+    color: #89616a;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 17px;
+    font-style: italic;
+
+    line-height: 1.45;
+}
+
+.lightbox-hint {
+    position: absolute;
+    bottom: 22px;
+
+    color: #f6dce4;
+
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+/* ======================================
+   OUR MEMORIES
+   ====================================== */
+
+.memories-screen {
+    align-items: flex-start;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at 10% 8%,
+            #ffeaf0 0%,
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 90% 78%,
+            #fff0df 0%,
+            transparent 34%
+        ),
+        linear-gradient(
+            180deg,
+            #fffaf7 0%,
+            #fff5f2 100%
+        );
+
+    padding: 34px 24px 90px;
+
+    overflow-x: hidden;
+}
+
+
+.memories-container {
+    width: min(1180px, 100%);
+    margin: 0 auto;
+}
+
+
+/* ======================================
+   BACK BUTTON
+   ====================================== */
+
+.memories-back-btn {
+    padding: 10px 18px;
+
+    border: 1px solid #ddb8c2;
+    border-radius: 999px;
+
+    background: #fffaf8d9;
+
+    color: #9c6879;
+
+    font-size: 12px;
+
+    box-shadow:
+        0 8px 25px #8c5d6d10;
+
+    transition:
+        transform .25s ease,
+        background .25s ease,
+        color .25s ease;
+}
+
+.memories-back-btn:hover {
+    background: #dfa4b5;
+    color: #fff;
+
+    transform: translateX(-4px);
+}
+
+
+/* ======================================
+   HEADER
+   ====================================== */
+
+.memories-header {
+    max-width: 720px;
+
+    margin: 42px auto 58px;
+
+    text-align: center;
+}
+
+.memories-label {
+    margin-bottom: 15px;
+
+    color: #b28b63;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+}
+
+.memories-header h1 {
+    color: #805260;
+
+    font-size:
+        clamp(45px, 6vw, 76px);
+
+    font-weight: 500;
+
+    line-height: 1.05;
+}
+
+.memories-header h1 span {
+    color: #d17691;
+
+    font-style: italic;
+}
+
+.memories-header p {
+    max-width: 520px;
+
+    margin: 18px auto 0;
+
+    color: #9b7d85;
+
+    font-size: 14px;
+
+    line-height: 1.85;
+}
+
+.memories-divider {
+    margin-top: 23px;
+
+    color: #c99c72;
+
+    letter-spacing: 8px;
+}
+
+
+/* ======================================
+   MEMORY GRID
+   ====================================== */
+
+.memories-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 45px 32px;
+
+    align-items: start;
+}
+
+
+/* ======================================
+   MEMORY CARD
+   ====================================== */
+
+.memory-card {
+    position: relative;
+
+    padding: 13px 13px 16px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fffefc 0%,
+            #fffaf7 100%
+        );
+
+    border: 1px solid #eadbd4;
+
+    box-shadow:
+        0 17px 35px #76505f12;
+
+    cursor: pointer;
+
+    transform:
+        rotate(var(--rotation, 0deg));
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease;
+
+    animation:
+        memoryIn .7s ease both;
+
+    animation-delay:
+        var(--delay);
+}
+
+.memory-card::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 7px;
+
+    border:
+        1px solid #f0e4de;
+
+    pointer-events: none;
+}
+
+
+/* Individual rotation */
+
+.memory-card:nth-child(1) {
+    --rotation: -1.4deg;
+}
+
+.memory-card:nth-child(2) {
+    --rotation: 1.2deg;
+    margin-top: 18px;
+}
+
+.memory-card:nth-child(3) {
+    --rotation: -.8deg;
+    margin-top: 7px;
+}
+
+.memory-card:nth-child(4) {
+    --rotation: 1.5deg;
+    margin-top: 11px;
+}
+
+.memory-card:nth-child(5) {
+    --rotation: -.9deg;
+    margin-top: 24px;
+}
+
+.memory-card:nth-child(6) {
+    --rotation: .7deg;
+}
+
+
+/* Hover */
+
+.memory-card:hover {
+    transform:
+        translateY(-10px)
+        rotate(0deg);
+
+    box-shadow:
+        0 28px 55px #76505f24;
+}
+
+
+/* ======================================
+   PIN
+   ====================================== */
+
+.memory-pin {
+    position: absolute;
+
+    top: 6px;
+    left: 50%;
+
+    width: 10px;
+    height: 10px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius: 50%;
+
+    background: #c9879c;
+
+    box-shadow:
+        0 2px 6px #6d465030;
+
+    z-index: 5;
+}
+
+.memory-pin::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 2px;
+
+    border-radius: 50%;
+
+    background: #f8dce3;
+}
+
+
+/* ======================================
+   CARD ANIMATION
+   ====================================== */
+
+@keyframes memoryIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(28px)
+            rotate(var(--rotation));
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            rotate(var(--rotation));
+    }
+
+}
+
+
+/* ======================================
+   IMAGE
+   ====================================== */
+
+.memory-image-wrap {
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 4 / 5;
+
+    overflow: hidden;
+
+    background: #f1e6e2;
+}
+
+.memory-image-wrap img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform .5s ease;
+}
+
+.memory-card:hover
+.memory-image-wrap img {
+    transform:
+        scale(1.035);
+}
+
+
+/* Image overlay */
+
+.memory-image-wrap::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            #3a1e2908 0%,
+            transparent 55%,
+            #3a1e290d 100%
+        );
+
+    pointer-events: none;
+}
+
+
+/* ======================================
+   NUMBER
+   ====================================== */
+
+.memory-number {
+    position: absolute;
+
+    top: 13px;
+    left: 13px;
+
+    z-index: 3;
+
+    padding: 7px 10px;
+
+    background: #fffaf5e8;
+
+    color: #9c7766;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+
+/* ======================================
+   TAPE
+   ====================================== */
+
+.memory-tape {
+    position: absolute;
+
+    top: -1px;
+    left: 50%;
+
+    width: 88px;
+    height: 21px;
+
+    transform:
+        translateX(-50%)
+        rotate(-1.3deg);
+
+    background: #e7d19cc2;
+
+    box-shadow:
+        0 1px 3px #684d2518;
+
+    z-index: 4;
+}
+
+
+/* ======================================
+   CARD CONTENT
+   ====================================== */
+
+.memory-info {
+    position: relative;
+
+    z-index: 2;
+
+    padding:
+        22px 7px 4px;
+}
+
+.memory-date {
+    color: #b18b61;
+
+    font-size: 9px;
+
+    letter-spacing: 2.3px;
+}
+
+.memory-info h2 {
+    margin:
+        10px 0 8px;
+
+    color: #79515e;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 24px;
+
+    font-weight: 500;
+
+    line-height: 1.25;
+}
+
+.memory-info p {
+    margin: 0;
+
+    color: #9a8589;
+
+    font-size: 12px;
+
+    line-height: 1.8;
+}
+
+
+/* ======================================
+   OPEN BUTTON
+   ====================================== */
+
+.memory-open-btn {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    margin-top: 15px;
+
+    padding:
+        7px 0 4px;
+
+    border: 0;
+
+    border-bottom:
+        1px solid #dbabb8;
+
+    background: transparent;
+
+    color: #bd7088;
+
+    font-size: 11px;
+
+    transition:
+        color .2s ease,
+        gap .2s ease;
+}
+
+.memory-open-btn:hover {
+    color: #95546b;
+
+    gap: 10px;
+}
+
+.memory-open-btn span {
+    font-size: 13px;
+}
+
+
+/* ======================================
+   MISSING IMAGE
+   ====================================== */
+
+.image-missing {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.missing-image {
+    width: 100%;
+    height: 100%;
+
+    padding: 28px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at 20% 18%,
+            #ffe8ee 0%,
+            transparent 33%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            #fff0df 0%,
+            transparent 35%
+        ),
+        #f5ebe7;
+
+    color: #8f6d76;
+}
+
+.missing-image span {
+    margin-bottom: 12px;
+
+    color: #d0879f;
+
+    font-size: 30px;
+}
+
+.missing-image strong {
+    color: #835866;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 20px;
+
+    font-weight: 500;
+}
+
+.missing-image small {
+    max-width: 210px;
+
+    margin-top: 8px;
+
+    color: #aa8d94;
+
+    font-size: 10px;
+
+    line-height: 1.6;
+}
+
+
+/* ======================================
+   ENDING
+   ====================================== */
+
+.memories-ending {
+    padding:
+        110px 20px 10px;
+
+    text-align: center;
+}
+
+.ending-heart {
+    color: #d58ba4;
+
+    font-size: 36px;
+}
+
+.memories-ending > p:first-of-type {
+    margin:
+        18px 0;
+
+    color: #b18b61;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+}
+
+.memories-ending h2 {
+    color: #80505f;
+
+    font-size:
+        clamp(28px, 4vw, 44px);
+
+    font-weight: 500;
+
+    line-height: 1.45;
+}
+
+.memories-ending h2 span {
+    color: #c7778e;
+
+    font-style: italic;
+}
+
+.ending-text {
+    max-width: 560px;
+
+    margin:
+        18px auto 0;
+
+    color: #9a7b84;
+
+    font-size: 13px;
+
+    line-height: 1.95;
+}
+
+
+/* ======================================
+   MEMORY MODAL
+   ====================================== */
+
+.memory-modal {
+    padding: 24px;
+}
+
+.memory-modal-card {
+    position: relative;
+
+    width:
+        min(960px, 94vw);
+
+    max-height: 88vh;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    overflow: hidden;
+
+    background: #fffaf6;
+
+    border:
+        1px solid #eadbd2;
+
+    box-shadow:
+        0 35px 110px #00000048;
+
+    animation:
+        memoryModalIn
+        .38s
+        cubic-bezier(.2,.85,.25,1)
+        both;
+}
+
+
+/* Modal animation */
+
+@keyframes memoryModalIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(20px)
+            scale(.975)
+            rotate(-.4deg);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1)
+            rotate(0);
+    }
+
+}
+
+
+/* Tape on modal */
+
+.memory-modal-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 14px;
+    left: 50%;
+
+    width: 92px;
+    height: 21px;
+
+    transform:
+        translateX(-50%)
+        rotate(-1deg);
+
+    background: #e9d3a1bc;
+
+    z-index: 5;
+}
+
+
+/* Image */
+
+.memory-modal-image-wrap {
+    position: relative;
+
+    min-height: 570px;
+
+    background: #f0e3df;
+}
+
+.memory-modal-image-wrap img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* Text side */
+
+.memory-modal-copy {
+    align-self: center;
+
+    padding:
+        56px 48px 48px;
+}
+
+.memory-modal-label {
+    color: #b18b61;
+
+    font-size: 9px;
+
+    letter-spacing: 2.3px;
+
+    line-height: 1.6;
+}
+
+.memory-modal-copy h2 {
+    margin:
+        18px 0;
+
+    color: #79515e;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(31px, 4vw, 50px);
+
+    font-weight: 500;
+
+    line-height: 1.18;
+}
+
+.memory-modal-copy p {
+    color: #917d81;
+
+    font-size: 14px;
+
+    line-height: 2.05;
+}
+
+
+/* Modal footer */
+
+.memory-modal-footer {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    margin-top: 30px;
+
+    color: #bd8294;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+.memory-modal-footer span:first-child {
+    font-size: 18px;
+}
+
+
+/* Close button */
+
+.memory-modal-close {
+    top: 17px;
+    right: 22px;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+/* ======================================
+   RESPONSIVE
+   ====================================== */
+
+@media (max-width: 900px) {
+    .portrait-gallery,
+    .memories-grid {
+        grid-template-columns: repeat(
+            2,
+            minmax(0, 1fr)
+        );
+    }
+
+    .memory-card:nth-child(2),
+    .memory-card:nth-child(5) {
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .screen {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .gallery-screen,
+    .memories-screen {
+        padding-top: 35px;
+    }
+
+    .portrait-gallery,
+    .memories-grid,
+    .memory-modal-card {
+        grid-template-columns: 1fr;
+    }
+
+    .portrait-card:nth-child(n),
+    .memory-card:nth-child(n) {
+        margin-top: 0;
+    }
+
+    .gallery-counter {
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    .birthday-photo-placeholder {
+        width: 180px;
+        height: 220px;
+    }
+
+    .birthday-message {
+        font-size: 13px;
+    }
+
+    .memory-modal-image-wrap {
+        min-height: 320px;
+        max-height: 48vh;
+    }
+
+    .memory-modal-copy {
+        padding: 26px;
+    }
+
+    .lightbox-hint {
+        display: none;
+    }
+}
+/* ======================================
+   SCREEN 5 — A LITTLE LETTER
+   ====================================== */
+
+.letter-screen {
+    min-height: 100vh;
+
+    align-items: flex-start;
+    justify-content: center;
+
+    overflow-x: hidden;
+
+    padding:
+        34px 24px 80px;
+
+    background:
+        radial-gradient(
+            circle at 15% 12%,
+            #ffe8ef 0%,
+            transparent 31%
+        ),
+        radial-gradient(
+            circle at 88% 84%,
+            #fff0dc 0%,
+            transparent 34%
+        ),
+        linear-gradient(
+            180deg,
+            #fffaf8 0%,
+            #fff4f2 100%
+        );
+}
+
+
+.letter-container {
+    width: min(1050px, 100%);
+
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+
+/* ======================================
+   BACK BUTTON
+   ====================================== */
+
+.letter-back-btn {
+    display: inline-flex;
+
+    align-items: center;
+
+    align-self: flex-start;
+
+    padding:
+        10px 18px;
+
+    border:
+        1px solid #ddb8c2;
+
+    border-radius: 999px;
+
+    background:
+        #fffaf8d9;
+
+    color:
+        #9c6879;
+
+    font-size:
+        11px;
+
+    cursor: pointer;
+
+    transition:
+        transform .25s ease,
+        background .25s ease,
+        color .25s ease;
+}
+
+.letter-back-btn:hover {
+    background:
+        #dfa4b5;
+
+    color:
+        #fff;
+
+    transform:
+        translateX(-4px);
+}
+
+
+/* ======================================
+   HEADING
+   ====================================== */
+
+.letter-heading {
+    max-width:
+        720px;
+
+    margin:
+        48px auto 20px;
+}
+
+.letter-heading .small-label {
+    margin-bottom:
+        14px;
+}
+
+.letter-heading h1 {
+    color:
+        #805260;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(34px, 5vw, 58px);
+
+    font-weight:
+        500;
+
+    line-height:
+        1.18;
+}
+
+.letter-heading h1 span {
+    display:
+        block;
+
+    margin-top:
+        5px;
+
+    color:
+        #ce788f;
+
+    font-style:
+        italic;
+}
+
+.letter-intro {
+    margin:
+        17px auto 0;
+
+    color:
+        #a1848b;
+
+    font-size:
+        13px;
+
+    line-height:
+        1.8;
+}
+
+
+/* ======================================
+   LETTER STAGE
+   ====================================== */
+
+.letter-stage {
+    position:
+        relative;
+
+    min-height:
+        610px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    margin-top:
+        15px;
+}
+
+
+/* ======================================
+   SHADOW
+   ====================================== */
+
+.envelope-shadow {
+    position:
+        absolute;
+
+    left:
+        50%;
+
+    bottom:
+        70px;
+
+    width:
+        min(480px, 85vw);
+
+    height:
+        32px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius:
+        50%;
+
+    background:
+        #6e4a581c;
+
+    filter:
+        blur(14px);
+
+    transition:
+        .8s ease;
+}
+
+
+/* ======================================
+   ENVELOPE
+   ====================================== */
+
+.letter-envelope {
+    position:
+        relative;
+
+    width:
+        min(540px, 88vw);
+
+    aspect-ratio:
+        1.5 / 1;
+
+    perspective:
+        1200px;
+
+    transition:
+        transform .7s ease;
+}
+
+
+/* ======================================
+   ENVELOPE BACK
+   ====================================== */
+
+.envelope-back {
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    z-index:
+        1;
+
+    overflow:
+        hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e9bfc9 0%,
+            #f3ccd4 100%
+        );
+
+    border:
+        1px solid #d8aab6;
+
+    box-shadow:
+        0 25px 50px #74505d22;
+}
+
+
+/* Left fold */
+
+.envelope-back::before {
+    content:
+        "";
+
+    position:
+        absolute;
+
+    left:
+        0;
+
+    bottom:
+        0;
+
+    width:
+        50%;
+
+    height:
+        100%;
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 100%,
+            0 100%
+        );
+
+    background:
+        #efc8d0;
+}
+
+
+/* Right fold */
+
+.envelope-back::after {
+    content:
+        "";
+
+    position:
+        absolute;
+
+    right:
+        0;
+
+    bottom:
+        0;
+
+    width:
+        50%;
+
+    height:
+        100%;
+
+    clip-path:
+        polygon(
+            100% 0,
+            100% 100%,
+            0 100%
+        );
+
+    background:
+        #e5b8c4;
+}
+
+
+/* ======================================
+   LETTER PAPER
+   ====================================== */
+.letter-paper {
+    position: absolute;
+
+    left: 8%;
+    bottom: 6%;
+
+    width: 84%;
+    height: 62%;
+
+    z-index: 2;
+
+    overflow: hidden;
+
+    padding: 28px 34px 24px;
+
+    background: #fffdf9;
+    border: 1px solid #e7dbd2;
+    box-shadow: 0 8px 22px #6a4c5714;
+
+    text-align: left;
+
+    /* LÚC CHƯA MỞ: GIẤU LÁ THƯ */
+    transform: translateY(65%);
+
+    transition:
+        transform .9s cubic-bezier(.2,.8,.2,1),
+        z-index 0s linear .9s;
+
+    pointer-events: none;
+}
+/* Paper top line */
+
+.letter-paper-top {
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    gap:
+        15px;
+
+    padding-bottom:
+        11px;
+
+    border-bottom:
+        1px solid #eadfd8;
+
+    color:
+        #bb9271;
+
+    font-size:
+        8px;
+
+    letter-spacing:
+        2px;
+}
+
+
+/* Paper body */
+
+.letter-paper-body {
+    height:
+        calc(100% - 36px);
+
+    overflow-y:
+        auto;
+
+    padding-right:
+        8px;
+
+    color:
+        #8c747a;
+
+    font-size:
+        12px;
+
+    line-height:
+        1.9;
+}
+
+.letter-paper-body p {
+    margin:
+        0 0 14px;
+}
+
+.letter-greeting {
+    color:
+        #7c5660;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        23px;
+
+    margin-bottom:
+        15px !important;
+}
+
+.letter-wish {
+    color:
+        #9d6274;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        15px;
+
+    line-height:
+        1.8;
+}
+
+.letter-signature {
+    margin-top:
+        22px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        flex-end;
+
+    gap:
+        3px;
+
+    color:
+        #ad8490;
+}
+
+.letter-signature strong {
+    color:
+        #8c5868;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        18px;
+}
+
+
+/* ======================================
+   FLAP
+   ====================================== */
+
+.envelope-flap {
+    position:
+        absolute;
+
+    inset:
+        0 0 auto 0;
+
+    z-index:
+        4;
+
+    width:
+        100%;
+
+    height:
+        58%;
+
+    transform-origin:
+        top center;
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            50% 100%
+        );
+
+    background:
+        linear-gradient(
+            180deg,
+            #f0cbd3 0%,
+            #e7b9c5 100%
+        );
+
+    border:
+        1px solid #d8aab6;
+
+    transition:
+        transform .85s
+        cubic-bezier(.2,.75,.2,1);
+
+    backface-visibility:
+        hidden;
+}
+
+
+/* ======================================
+   OPEN BUTTON
+   ====================================== */
+
+.open-letter-btn {
+    position:
+        absolute;
+
+    left:
+        50%;
+
+    bottom:
+        28px;
+
+    z-index:
+        7;
+
+    padding:
+        11px 21px;
+
+    transform:
+        translateX(-50%);
+
+    border:
+        1px solid #d49cad;
+
+    border-radius:
+        999px;
+
+    background:
+        #fffaf9ee;
+
+    color:
+        #a55f75;
+
+    font-size:
+        11px;
+
+    cursor:
+        pointer;
+
+    box-shadow:
+        0 10px 24px #704a5816;
+
+    transition:
+        .3s ease;
+}
+
+.open-letter-btn:hover {
+    background:
+        #d98fa4;
+
+    color:
+        #fff;
+
+    transform:
+        translateX(-50%)
+        translateY(-3px);
+}
+
+
+/* ======================================
+   HINT
+   ====================================== */
+
+.letter-hint {
+    position:
+        absolute;
+
+    left:
+        50%;
+
+    bottom:
+        17px;
+
+    transform:
+        translateY(100%);
+
+    margin:
+        0;
+
+    color:
+        #aa8990;
+
+    font-size:
+        10px;
+
+    letter-spacing:
+        1.5px;
+
+    opacity:
+        .8;
+
+    transition:
+        .4s ease;
+}
+
+
+/* ======================================
+   OPENED STATE
+   ====================================== */
+
+.letter-stage.opened .letter-paper {
+    transform: translateY(-42%);
+
+    z-index: 6;
+
+    pointer-events: auto;
+
+    transition:
+        transform .9s cubic-bezier(.2,.8,.2,1),
+        z-index 0s linear 0s;
+}
+.letter-stage.opened
+.envelope-flap {
+    transform:
+        rotateX(180deg);
+}
+
+.letter-stage.opened
+.open-letter-btn {
+    opacity:
+        0;
+
+    pointer-events:
+        none;
+}
+
+.letter-stage.opened
+.envelope-shadow {
+    width:
+        min(620px, 92vw);
+
+    opacity:
+        .6;
+}
+
+
+/* ======================================
+   AFTER MESSAGE
+   ====================================== */
+
+.letter-after-message {
+    max-width:
+        500px;
+
+    margin:
+        -10px auto 0;
+
+    opacity:
+        0;
+
+    transform:
+        translateY(14px);
+
+    pointer-events:
+        none;
+
+    transition:
+        opacity .5s ease,
+        transform .5s ease;
+}
+
+.letter-after-message.show {
+    opacity:
+        1;
+
+    transform:
+        translateY(0);
+
+    pointer-events:
+        auto;
+}
+
+.letter-after-message p {
+    margin:
+        0 0 14px;
+
+    color:
+        #a08188;
+
+    font-size:
+        12px;
+
+    line-height:
+        1.8;
+}
+
+.letter-small-back-btn {
+    padding:
+        8px 15px;
+
+    border:
+        1px solid #dfbcc5;
+
+    border-radius:
+        999px;
+
+    background:
+        #fffaf8;
+
+    color:
+        #a46879;
+
+    font-size:
+        10px;
+
+    cursor:
+        pointer;
+
+    transition:
+        .25s ease;
+}
+
+.letter-small-back-btn:hover {
+    background:
+        #dfa4b5;
+
+    color:
+        #fff;
+}
+
+
+/* ======================================
+   LETTER RESPONSIVE
+   ====================================== */
+
+@media (max-width: 600px) {
+
+    .letter-screen {
+        padding:
+            25px 16px 55px;
+    }
+
+    .letter-heading {
+        margin-top:
+            37px;
+    }
+
+    .letter-heading h1 {
+        font-size:
+            32px;
+    }
+
+    .letter-heading h1 span {
+        margin-top:
+            8px;
+    }
+
+    .letter-stage {
+        min-height:
+            565px;
+    }
+
+    .letter-envelope {
+        width:
+            min(450px, 92vw);
+    }
+
+    .letter-paper {
+        left:
+            5%;
+
+        width:
+            90%;
+
+        padding:
+            23px 22px 20px;
+    }
+
+    .letter-paper-body {
+        font-size:
+            10.5px;
+
+        line-height:
+            1.75;
+    }
+
+    .letter-greeting {
+        font-size:
+            20px;
+    }
+
+    .letter-signature strong {
+        font-size:
+            16px;
+    }
+
+    .open-letter-btn {
+        bottom:
+            -60px;
+    }
+
+    .letter-hint {
+        bottom:
+            10px;
+    }
+}
+/* ======================================
+   SCREEN 5 — A LITTLE LETTER
+   ====================================== */
+
+.letter-screen {
+    align-items: flex-start;
+    justify-content: center;
+
+    min-height: 100vh;
+
+    padding: 34px 24px 90px;
+
+    overflow-x: hidden;
+
+    background:
+        radial-gradient(
+            circle at 12% 12%,
+            #ffe8ef 0%,
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 88% 82%,
+            #fff0dc 0%,
+            transparent 32%
+        ),
+        linear-gradient(
+            180deg,
+            #fffaf8 0%,
+            #fff4f2 100%
+        );
+}
+
+
+.letter-container {
+    width: min(900px, 100%);
+
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+
+/* ======================================
+   BACK BUTTON
+   ====================================== */
+
+.letter-back-btn {
+    padding: 10px 18px;
+
+    border: 1px solid #ddb8c2;
+    border-radius: 999px;
+
+    background: #fffaf8d9;
+
+    color: #9c6879;
+
+    font-size: 11px;
+
+    cursor: pointer;
+
+    transition: .25s ease;
+}
+
+.letter-back-btn:hover {
+    background: #dfa4b5;
+    color: #fff;
+
+    transform: translateX(-4px);
+}
+
+
+/* ======================================
+   HEADING
+   ====================================== */
+
+.letter-heading {
+    max-width: 700px;
+
+    margin: 46px auto 35px;
+}
+
+.letter-heading .small-label {
+    margin-bottom: 15px;
+
+    color: #b28b63;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+}
+
+.letter-heading h1 {
+    color: #805260;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(34px, 5vw, 58px);
+
+    font-weight: 500;
+
+    line-height: 1.2;
+}
+
+.letter-heading h1 span {
+    display: block;
+
+    margin-top: 6px;
+
+    color: #ce788f;
+
+    font-style: italic;
+}
+
+.letter-intro {
+    margin-top: 16px;
+
+    color: #a1848b;
+
+    font-size: 13px;
+}
+
+
+/* ======================================
+   PAPER CARD
+   ====================================== */
+
+.letter-paper-card {
+    position: relative;
+
+    max-width: 760px;
+
+    margin: 0 auto;
+
+    padding:
+        36px 58px 46px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fffefb 0%,
+            #fffaf5 100%
+        );
+
+    border: 1px solid #eadbd4;
+
+    box-shadow:
+        0 25px 70px #72505f16;
+
+    text-align: left;
+
+    transform: rotate(-0.4deg);
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease;
+
+    animation:
+        letterAppear
+        .7s
+        ease
+        both;
+}
+
+.letter-paper-card:hover {
+    transform:
+        rotate(0deg)
+        translateY(-4px);
+
+    box-shadow:
+        0 30px 75px #72505f22;
+}
+
+
+@keyframes letterAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(25px)
+            rotate(-1deg);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            rotate(-0.4deg);
+    }
+}
+
+
+/* ======================================
+   PAPER DECORATION
+   ====================================== */
+
+.letter-paper-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 13px;
+    left: 50%;
+
+    width: 90px;
+    height: 20px;
+
+    transform:
+        translateX(-50%)
+        rotate(-1deg);
+
+    background: #e7d19cc7;
+}
+
+
+.letter-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    padding-bottom: 13px;
+
+    border-bottom:
+        1px solid #eadfd8;
+
+    color: #b18b61;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+
+.letter-decoration {
+    margin:
+        23px 0 25px;
+
+    text-align: center;
+
+    color: #ce8ba0;
+
+    font-size: 14px;
+
+    letter-spacing: 6px;
+}
+
+
+/* ======================================
+   LETTER CONTENT
+   ====================================== */
+
+.letter-content {
+    color: #8c747a;
+
+    font-size: 13px;
+
+    line-height: 2;
+}
+
+.letter-content p {
+    margin:
+        0 0 18px;
+}
+
+
+.letter-greeting {
+    margin-bottom: 17px !important;
+
+    color: #7c5660;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 29px;
+}
+
+
+.letter-wish {
+    margin-top: 28px !important;
+
+    color: #9d6274;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 17px;
+
+    line-height: 1.9;
+}
+
+
+.letter-signature {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    gap: 3px;
+
+    margin-top: 30px;
+
+    color: #ad8490;
+}
+
+.letter-signature strong {
+    color: #8c5868;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 19px;
+}
+
+
+/* ======================================
+   FINAL BUTTON
+   ====================================== */
+
+/* ======================================
+   FINAL LETTER BUTTON
+   ====================================== */
+
+.letter-open-final-btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    margin-top: 30px;
+
+    padding: 12px 24px;
+
+    border: 1px solid #dba6b5;
+    border-radius: 999px;
+
+    background:
+        rgba(255, 250, 248, 0.9);
+
+    color: #a76076;
+
+    font-family:
+        "Montserrat",
+        sans-serif;
+
+    font-size: 11px;
+
+    font-weight: 500;
+
+    letter-spacing: 0.5px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 22px rgba(121, 76, 93, 0.10);
+
+    transition:
+        all 0.3s ease;
+}
+
+.letter-open-final-btn:hover {
+    background: #d98fa4;
+
+    border-color: #d98fa4;
+
+    color: #fff;
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 12px 28px rgba(121, 76, 93, 0.18);
+}
+
+.letter-open-final-btn:active {
+    transform:
+        translateY(-1px);
+
+    box-shadow:
+        0 7px 17px rgba(121, 76, 93, 0.14);
+}
+
+.letter-open-final-btn:hover {
+    background: #d98fa4;
+
+    color: #fff;
+
+    transform:
+        translateY(-3px);
+}
+
+
+/* ======================================
+   FINAL MESSAGE
+   ====================================== */
+
+.letter-final-message {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin:
+        36px auto 0;
+
+    opacity: 0;
+
+    transform:
+        translateY(15px);
+
+    pointer-events: none;
+
+    transition:
+        opacity .6s ease,
+        transform .6s ease;
+}
+
+.letter-final-message.show {
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+.letter-final-message span {
+    color: #d08aa1;
+
+    font-size: 18px;
+}
+
+.letter-final-message p {
+    margin: 0;
+
+    color: #a27f88;
+
+    font-size: 12px;
+}
+
+.letter-final-message strong {
+    color: #825567;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(25px, 4vw, 38px);
+
+    font-weight: 500;
+}
+
+
+/* ======================================
+   RESPONSIVE
+   ====================================== */
+
+@media (max-width: 600px) {
+
+    .letter-screen {
+        padding:
+            25px 16px 60px;
+    }
+
+    .letter-heading {
+        margin-top: 38px;
+    }
+
+    .letter-heading h1 {
+        font-size: 32px;
+    }
+
+    .letter-paper-card {
+        padding:
+            31px 24px 35px;
+    }
+
+    .letter-content {
+        font-size: 12px;
+
+        line-height: 1.9;
+    }
+
+    .letter-greeting {
+        font-size: 23px;
+    }
+
+    .letter-wish {
+        font-size: 15px;
+    }
+
+    .letter-top {
+        font-size: 7px;
+    }
+
+}
+/* ======================================
+   OUR MEMORIES -> LETTER BUTTON
+   ====================================== */
+
+.letter-entry-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    margin-top: 26px;
+    padding: 12px 22px;
+
+    border: 1px solid #d8a5b4;
+    border-radius: 999px;
+
+    background: rgba(255, 250, 248, 0.92);
+
+    color: #a76076;
+
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 22px rgba(121, 76, 93, 0.10);
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.letter-entry-btn:hover {
+    background: #d991a7;
+    border-color: #d991a7;
+    color: #fff;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 28px rgba(121, 76, 93, 0.17);
+}
+
+.letter-entry-btn:active {
+    transform: translateY(-1px);
+}
+/* ======================================
+   SCREEN 6 — FINAL BIRTHDAY PAGE
+   ====================================== */
+
+.final-screen {
+    position: relative;
+
+    min-height: 100vh;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    padding: 40px 24px 55px;
+
+    background:
+        radial-gradient(
+            circle at 15% 15%,
+            #ffd9e8 0%,
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 87% 18%,
+            #ffe8a9 0%,
+            transparent 24%
+        ),
+        radial-gradient(
+            circle at 50% 80%,
+            #e9d8ff 0%,
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #fff2f7 0%,
+            #fff9df 47%,
+            #f2eaff 100%
+        );
+}
+
+
+/* ======================================
+   LIGHT GLOW
+   ====================================== */
+
+.final-screen::before {
+    content: "";
+
+    position: absolute;
+
+    width: 700px;
+    height: 700px;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, .72) 0%,
+            rgba(255, 255, 255, 0) 70%
+        );
+
+    pointer-events: none;
+}
+
+
+/* ======================================
+   MAIN CONTAINER
+   ====================================== */
+
+.final-container {
+    position: relative;
+
+    z-index: 10;
+
+    width: min(850px, 100%);
+
+    text-align: center;
+}
+
+
+/* ======================================
+   TOP SPARKLE
+   ====================================== */
+
+.final-top-sparkle {
+    margin-bottom: 20px;
+
+    color: #d67d9a;
+
+    font-size: 23px;
+
+    letter-spacing: 6px;
+
+    animation:
+        finalTwinkle 2.3s ease-in-out infinite;
+}
+
+
+/* ======================================
+   SMALL LABEL
+   ====================================== */
+
+.final-small-label {
+    color: #b27d5d;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    font-weight: 500;
+}
+
+
+/* ======================================
+   MAIN TITLE
+   ====================================== */
+
+.final-title {
+    margin-top: 18px;
+
+    color: #a55170;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(58px, 10vw, 125px);
+
+    font-weight: 500;
+
+    line-height: .86;
+
+    letter-spacing: -3px;
+
+    text-shadow:
+        0 5px 20px rgba(181, 85, 116, .10);
+
+    animation:
+        finalTitleIn
+        .9s
+        cubic-bezier(.2,.8,.2,1)
+        both;
+}
+
+.final-title span {
+    display: block;
+
+    margin: 16px 0;
+
+    color: #e2779c;
+
+    font-size:
+        .7em;
+
+    font-style: italic;
+
+    text-shadow:
+        0 5px 22px rgba(210, 111, 147, .16);
+}
+
+
+@keyframes finalTitleIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(24px)
+            scale(.96);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+/* ======================================
+   NAME
+   ====================================== */
+
+.final-name {
+    margin-top: 25px;
+
+    color: #743f55;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(42px, 7vw, 76px);
+
+    font-weight: 600;
+
+    letter-spacing: 8px;
+
+    animation:
+        nameAppear 1s
+        .2s
+        both;
+}
+
+.final-name span {
+    display: inline-block;
+
+    margin-left: 8px;
+
+    color: #e58ba5;
+
+    font-size: .65em;
+
+    animation:
+        finalHeartbeat
+        1.8s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes nameAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+/* ======================================
+   DIVIDER
+   ====================================== */
+
+.final-divider {
+    margin:
+        28px 0 24px;
+
+    color: #d78ba1;
+
+    font-size: 19px;
+
+    letter-spacing: 7px;
+}
+
+
+/* ======================================
+   WISH
+   ====================================== */
+
+.final-wish {
+    max-width: 650px;
+
+    margin: 0 auto;
+
+    color: #946f7a;
+
+    font-size:
+        clamp(13px, 1.7vw, 16px);
+
+    line-height: 2;
+
+    animation:
+        finalFadeUp .9s
+        .45s
+        both;
+}
+
+
+/* ======================================
+   BIG 21
+   ====================================== */
+
+.final-number {
+    margin-top: 25px;
+
+    color: rgba(211, 119, 151, .13);
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(120px, 18vw, 220px);
+
+    font-weight: 600;
+
+    line-height: .8;
+
+    user-select: none;
+
+    pointer-events: none;
+}
+
+
+/* ======================================
+   BOTTOM TEXT
+   ====================================== */
+
+.final-bottom-text {
+    margin-top:
+        -24px;
+
+    color: #a5838d;
+
+    font-size: 10px;
+
+    line-height: 1.8;
+
+    letter-spacing: 1px;
+}
+
+.final-signature {
+    margin-top: 12px;
+
+    color: #a45f76;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 19px;
+
+    font-style: italic;
+}
+
+.final-ending-stars {
+    margin-top: 25px;
+
+    color: #d58aa0;
+
+    font-size: 16px;
+
+    letter-spacing: 7px;
+}
+
+
+/* ======================================
+   STARS
+   ====================================== */
+
+.final-stars,
+.final-flowers,
+.final-hearts {
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+}
+
+
+.star {
+    position: absolute;
+
+    display: block;
+
+    color: #e48baa;
+
+    font-size: 25px;
+
+    animation:
+        floatingStar
+        var(--duration, 3.8s)
+        ease-in-out
+        infinite;
+}
+
+.s1 {
+    top: 8%;
+    left: 9%;
+
+    color: #f29ab4;
+
+    font-size: 34px;
+
+    --duration: 3.1s;
+}
+
+.s2 {
+    top: 14%;
+    right: 11%;
+
+    color: #f4b85e;
+
+    font-size: 22px;
+
+    --duration: 4s;
+}
+
+.s3 {
+    top: 28%;
+    left: 20%;
+
+    color: #bc94df;
+
+    font-size: 20px;
+
+    --duration: 2.8s;
+}
+
+.s4 {
+    top: 36%;
+    right: 19%;
+
+    color: #e483a5;
+
+    font-size: 30px;
+
+    --duration: 4.5s;
+}
+
+.s5 {
+    top: 58%;
+    left: 8%;
+
+    color: #f3af72;
+
+    font-size: 22px;
+
+    --duration: 3.3s;
+}
+
+.s6 {
+    top: 63%;
+    right: 8%;
+
+    color: #a983db;
+
+    font-size: 34px;
+
+    --duration: 3.8s;
+}
+
+.s7 {
+    bottom: 16%;
+    left: 17%;
+
+    color: #dc7d9d;
+
+    font-size: 26px;
+
+    --duration: 4.2s;
+}
+
+.s8 {
+    bottom: 11%;
+    right: 18%;
+
+    color: #f2aa61;
+
+    font-size: 20px;
+
+    --duration: 3s;
+}
+
+.s9 {
+    top: 47%;
+    left: 3%;
+
+    color: #c6a0e7;
+
+    font-size: 18px;
+
+    --duration: 2.6s;
+}
+
+.s10 {
+    top: 49%;
+    right: 3%;
+
+    color: #eb849e;
+
+    font-size: 20px;
+
+    --duration: 3.6s;
+}
+
+
+@keyframes floatingStar {
+
+    0%, 100% {
+        transform:
+            translateY(0)
+            rotate(0deg)
+            scale(1);
+        opacity: .72;
+    }
+
+    50% {
+        transform:
+            translateY(-12px)
+            rotate(12deg)
+            scale(1.16);
+        opacity: 1;
+    }
+
+}
+
+
+/* ======================================
+   FLOWERS
+   ====================================== */
+
+.flower {
+    position: absolute;
+
+    display: block;
+
+    font-size:
+        clamp(28px, 4vw, 48px);
+
+    filter:
+        drop-shadow(
+            0 5px 8px rgba(150, 79, 105, .08)
+        );
+
+    animation:
+        flowerFloat
+        var(--flower-duration, 5s)
+        ease-in-out
+        infinite;
+}
+
+.f1 {
+    left: 3%;
+    top: 18%;
+    --flower-duration: 4.2s;
+}
+
+.f2 {
+    left: 7%;
+    bottom: 17%;
+    --flower-duration: 5.5s;
+}
+
+.f3 {
+    left: 15%;
+    bottom: 5%;
+    --flower-duration: 4.5s;
+}
+
+.f4 {
+    right: 5%;
+    top: 17%;
+    --flower-duration: 5s;
+}
+
+.f5 {
+    right: 9%;
+    bottom: 19%;
+    --flower-duration: 4s;
+}
+
+.f6 {
+    right: 16%;
+    bottom: 5%;
+    --flower-duration: 5.7s;
+}
+
+.f7 {
+    top: 7%;
+    left: 32%;
+    font-size: 26px;
+    --flower-duration: 3.8s;
+}
+
+.f8 {
+    top: 9%;
+    right: 31%;
+    font-size: 26px;
+    --flower-duration: 4.6s;
+}
+
+.f9 {
+    top: 48%;
+    left: 12%;
+    font-size: 26px;
+    --flower-duration: 4.8s;
+}
+
+.f10 {
+    top: 48%;
+    right: 11%;
+    font-size: 26px;
+    --flower-duration: 4.1s;
+}
+
+
+@keyframes flowerFloat {
+
+    0%, 100% {
+        transform:
+            translateY(0)
+            rotate(-4deg);
+    }
+
+    50% {
+        transform:
+            translateY(-13px)
+            rotate(5deg);
+    }
+
+}
+
+
+/* ======================================
+   HEARTS
+   ====================================== */
+
+.final-hearts span {
+    position: absolute;
+
+    color: #df88a5;
+
+    font-size:
+        clamp(17px, 2vw, 27px);
+
+    animation:
+        heartFloat
+        var(--heart-duration, 4.5s)
+        ease-in-out
+        infinite;
+}
+
+.final-hearts span:nth-child(1) {
+    left: 14%;
+    top: 40%;
+
+    --heart-duration: 4s;
+}
+
+.final-hearts span:nth-child(2) {
+    right: 14%;
+    top: 39%;
+
+    color: #eea36b;
+
+    --heart-duration: 5s;
+}
+
+.final-hearts span:nth-child(3) {
+    left: 29%;
+    bottom: 19%;
+
+    color: #ba8de0;
+
+    --heart-duration: 4.2s;
+}
+
+.final-hearts span:nth-child(4) {
+    right: 29%;
+    bottom: 19%;
+
+    color: #e78aa4;
+
+    --heart-duration: 5.2s;
+}
+
+.final-hearts span:nth-child(5) {
+    left: 4%;
+    top: 70%;
+
+    color: #f0b26c;
+
+    --heart-duration: 4.6s;
+}
+
+.final-hearts span:nth-child(6) {
+    right: 4%;
+    top: 70%;
+
+    color: #c493df;
+
+    --heart-duration: 3.9s;
+}
+
+
+@keyframes heartFloat {
+
+    0%, 100% {
+        transform:
+            translateY(0)
+            rotate(-4deg);
+        opacity: .7;
+    }
+
+    50% {
+        transform:
+            translateY(-15px)
+            rotate(5deg);
+        opacity: 1;
+    }
+
+}
+
+
+/* ======================================
+   SMALL ANIMATIONS
+   ====================================== */
+
+@keyframes finalTwinkle {
+
+    0%, 100% {
+        opacity: .55;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.08);
+    }
+
+}
+
+@keyframes finalHeartbeat {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.16);
+    }
+
+}
+
+@keyframes finalFadeUp {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+/* ======================================
+   MOBILE
+   ====================================== */
+
+@media (max-width: 600px) {
+
+    .final-screen {
+        padding:
+            32px 15px 45px;
+    }
+
+    .final-small-label {
+        font-size: 8px;
+
+        letter-spacing: 2.5px;
+    }
+
+    .final-title {
+        font-size:
+            clamp(50px, 17vw, 78px);
+
+        letter-spacing: -1px;
+    }
+
+    .final-name {
+        font-size: 42px;
+
+        letter-spacing: 5px;
+    }
+
+    .final-wish {
+        font-size: 12px;
+
+        line-height: 1.85;
+    }
+
+    .final-number {
+        font-size: 145px;
+    }
+
+    .final-bottom-text {
+        font-size: 9px;
+    }
+
+    .flower {
+        font-size: 28px;
+    }
+
+    .star {
+        font-size: 18px;
+    }
+
+    .s1,
+    .s6 {
+        font-size: 25px;
+    }
+
+}
